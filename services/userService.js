@@ -27,7 +27,7 @@ class UserService {
 				activationLink: activationLink
 			})
 			const token = generateJwt(user._id, email)
-			await mailService.sendActivationEmail(email, `http://localhost:5000/api/user/activate:${activationLink}`)
+			await mailService.sendActivationEmail(email, `https://soundnznode.herokuapp.com/api/user/activate:${activationLink}`)
 		
 			return {
 				token, 
@@ -49,7 +49,7 @@ class UserService {
 		const equalPassword = await bcrypt.compareSync(password , candidate.password)
  		if(!equalPassword) return {error: 'password not equal'}
 		 const token = generateJwt(candidate._id, email)
-		 if(!candidate.isActivated) await mailService.sendActivationEmail(email, `http://localhost:5000/api/user/activate:${candidate.activationLink}`)
+		 if(!candidate.isActivated) await mailService.sendActivationEmail(email, `https://soundnznode.herokuapp.com/api/user/activate:${candidate.activationLink}`)
  
 		return {
 			token,
