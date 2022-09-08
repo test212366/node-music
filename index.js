@@ -13,7 +13,7 @@ app.use('/api', router)
 ;( async () => {
 	try {
 		await mongoose.connect('mongodb+srv://qwerty:qwert123@cluster0.acko9cz.mongodb.net/UsersDB?retryWrites=true&w=majority')
-		app.listen(5000, () => console.log('SERVER STARTED '))
+		app.listen(process.env.PORT || 5000, () => console.log('SERVER STARTED '))
 	} catch(e) {
 		console.log(e)
 	}
